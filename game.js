@@ -1,6 +1,6 @@
 var w = window.innerWidth;
 var h = window.innerHeight;
-rate=5;
+rate=3;
 
 var singles=[-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9];
 var wholes=[0,1,2,3,4,5,6,7,8,9];
