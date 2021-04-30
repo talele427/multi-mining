@@ -123,7 +123,7 @@ class turtle{
         if(random(skiller)==1) {
            
             turtles.push(new turtle(this.x,this.y,random(types)));
-            if(turtles.length>100) skiller=[];
+            if(turtles.length>43) skiller=[];
         }
     }
 }
