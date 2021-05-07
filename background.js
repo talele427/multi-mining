@@ -148,5 +148,8 @@ function draw(){
     for(var i=0;i<turtles.length;i++){
         turtles[i].move();
     }
-
+    
+    fill(255,255,255,10)
+    rect(w*0.35,h*0.2,w*0.3,h*0.6)
+    
 }
