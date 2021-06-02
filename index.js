@@ -1,16 +1,32 @@
 const express = require('express');
-const socket = require('socket.io');
-
 const app = express();
-const server = app.listen(4000, function(){
-    console.log('eavesdropping');
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+var ores=60;
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+  });
+
+app.get('/style.css', (req, res) => {
+    res.sendFile(__dirname + '/style.css');
 });
 
-app.use(express.static('public'));
 
-
-var io = socket(server);
-
-io.on('connection', function(socket){
-    console.log('guest has logged in');
+server.listen(3000, () => {
+    console.log('server running...');
 });
+
+
+  
+
+io.on("connection", (socket) => {
+    console.log("hello world");
+    socket.on("miner", (arg) => {
+        ores-=arg; // world
+    });
+});
+
