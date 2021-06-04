@@ -1,32 +1,57 @@
 const express = require('express');
-const app = express();
+const path = require('path');
 const http = require('http');
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
+const socketIO = require('socket.io');
+const { setInterval } = require('timers');
 
-var ores=60;
+const publicPath= path.join(__dirname, '/public');
+const port=process.env.PORT || 4000;
+let app = express();
+let server = http.createServer(app);
+let io = socketIO(server);
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-  });
+var onlinePlayers=0;
+var avOre=3;
 
-app.get('/style.css', (req, res) => {
-    res.sendFile(__dirname + '/style.css');
+app.use(express.static(publicPath));
+
+server.listen(port, () => {
+    console.log('listening @ %d',port);
+
+})
+
+io.on('connection', (socket) => {
+    onlinePlayers++;
+    socket.on('named', (name) => {
+        console.log(name+' has joined the server @ ' + socket.id);
+    });
+    io.sockets.emit('getValues', onlinePlayers, avOre);
 });
 
-
-server.listen(3000, () => {
-    console.log('server running...');
-});
-
-
-  
-
-io.on("connection", (socket) => {
-    console.log("hello world");
-    socket.on("miner", (arg) => {
-        ores-=arg; // world
+io.on('connection', (socket) =>{
+    socket.on('disconnect', ()=>{
+        console.log(socket.id+" has disconnected");
+        onlinePlayers--;
+        io.sockets.emit('getValues', onlinePlayers, avOre);
     });
 });
 
+io.on('connection',(socket)=>{
+    socket.on('miner', ()=>{
+        if(avOre>=0){
+            avOre--;
+            socket.emit('minerCon');
+            io.sockets.emit('getValues', onlinePlayers, avOre);
+        }
+        else{
+            io.sockets.emit('getValues', onlinePlayers, avOre);
+        }
+    })
+})
+
+function generateOre(){
+    avOre=3;
+    io.sockets.emit('getValues', onlinePlayers,avOre);
+}
+
+setInterval(generateOre, 10000);
