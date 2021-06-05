@@ -41,7 +41,7 @@ io.on('connection', (socket) =>{
 
 io.on('connection',(socket)=>{              
     socket.on('miner', ()=>{                //listening for mine
-        if(avOre>=0){
+        if(avOre>0){
             avOre--;
             socket.emit('minerCon');
             io.sockets.emit('getValues', onlinePlayers, avOre);
