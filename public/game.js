@@ -53,7 +53,7 @@ socket.on('minerCon', ()=>{                                 //listening for mine
 })
 
 socket.on('getValues',(onlinePlayers, avOre) =>{            //listening for server variables
-    online.innerHTML=onlinePlayers+" onlines";
+    online.innerHTML=onlinePlayers+" online";
     sqr.innerHTML=avOre;
 });
 
