@@ -1,43 +1,46 @@
-const express = require('express');
-const path = require('path');
-const http = require('http');
-const socketIO = require('socket.io');
-const { setInterval } = require('timers');
+                                        //Initiation
+                                            //requires
+const express = require('express');             //middle-ware
+const path = require('path');                   //for http
+const http = require('http');                   //http
+const socketIO = require('socket.io');          //bi-directional communication
+const { setInterval } = require('timers');      //timer
+                                            //declarations
+const publicPath= path.join(__dirname, '/public');      //for http
+const port=process.env.PORT || 4000;                    //for http
+let app = express();                                    //application
+let server = http.createServer(app);                    //nodejs server with http and express app
+let io = socketIO(server);                              //a socket on ^
 
-const publicPath= path.join(__dirname, '/public');
-const port=process.env.PORT || 4000;
-let app = express();
-let server = http.createServer(app);
-let io = socketIO(server);
-
-var onlinePlayers=0;
+var onlinePlayers=0;                        //server-side variables
 var avOre=3;
+var tim = 15000;
 
-app.use(express.static(publicPath));
+app.use(express.static(publicPath));        //middle-ware directory for public website
 
-server.listen(port, () => {
+server.listen(port, () => {                 //nodejs constant eventlistener
     console.log('listening @ %d',port);
 
 })
 
-io.on('connection', (socket) => {
+io.on('connection', (socket) => {           //entrance event
     onlinePlayers++;
-    socket.on('named', (name) => {
+    socket.on('named', (name) => {          //listening for name
         console.log(name+' has joined the server @ ' + socket.id);
     });
     io.sockets.emit('getValues', onlinePlayers, avOre);
 });
 
 io.on('connection', (socket) =>{
-    socket.on('disconnect', ()=>{
+    socket.on('disconnect', ()=>{           //listening for disconnection
         console.log(socket.id+" has disconnected");
         onlinePlayers--;
         io.sockets.emit('getValues', onlinePlayers, avOre);
     });
 });
 
-io.on('connection',(socket)=>{
-    socket.on('miner', ()=>{
+io.on('connection',(socket)=>{              
+    socket.on('miner', ()=>{                //listening for mine
         if(avOre>=0){
             avOre--;
             socket.emit('minerCon');
@@ -49,9 +52,9 @@ io.on('connection',(socket)=>{
     })
 })
 
-function generateOre(){
+function generateOre(){                     //global resource
     avOre=3;
     io.sockets.emit('getValues', onlinePlayers,avOre);
 }
 
-setInterval(generateOre, 10000);
+setInterval(generateOre, tim);            //timer
