@@ -37,15 +37,18 @@ User.findOne({username:"admin"}, function(err,res){
     let admin = JSON.parse((JSON.stringify(res)));
 
     tim = 60000 - (admin.timLevel * 1000);
-    maxOre=10 + admin.oreLevel-1;
-    avOre=maxOre;
     oreDonated =admin.oreProgress;
     timDonated =admin.timProgress;
     timLevel=admin.timLevel;
     oreLevel=admin.oreLevel;
     oreCost = 10*(oreLevel/2) - oreDonated;
     timCost=100*(timLevel+1) - timDonated;
-
+    let a =0;
+    for(var i = 1; i<oreLevel;i++){
+        a+=i;
+    }
+    maxOre=10+a;
+    avOre=maxOre;
 });
 
 app.use(express.static(publicPath));        //middle-ware directory for public website
@@ -138,7 +141,7 @@ io.on('connection', (socket)=>{
         
         if(oreCost<=0){
             oreLevel++;
-            maxOre=10+oreLevel-1;
+            maxOre+=oreLevel;
             oreCost=10*(oreLevel/2);
         }
         socket.emit('donateMCon', donation);
@@ -152,7 +155,7 @@ io.on('connection', (socket)=>{
         
         if(timCost<=0){
             timLevel++;
-            tim=60000-(timLevel*1000);
+            tim=60000-(timLevel*3000);
             timCost=100*(timLevel+1);
         }
         socket.emit('donateFCon', donation);
