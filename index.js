@@ -1,4 +1,5 @@
-                                        //Initiation
+(function(){
+//Initiation
                                             //requires
 const express = require('express');             //middle-ware
 const path = require('path');                   //for http
@@ -190,3 +191,5 @@ function updServ(){
 setInterval(generateOre, tim);            //timer
 
 setInterval(updServ,tim);
+  
+})();
