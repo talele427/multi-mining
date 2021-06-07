@@ -49,6 +49,10 @@ User.findOne({username:"admin"}, function(err,res){
     }
     maxOre=10+a;
     avOre=maxOre;
+    if(tim<=10000){
+        tim=10000;
+        timCost=0;
+    }
 });
 
 app.use(express.static(publicPath));        //middle-ware directory for public website
@@ -157,6 +161,10 @@ io.on('connection', (socket)=>{
             timLevel++;
             tim=60000-(timLevel*3000);
             timCost=100*(timLevel+1);
+            if(tim<=10000){
+                tim=10000;
+                timCost=0;
+            }
         }
         socket.emit('donateFCon', donation);
         io.sockets.emit('getValues', onlinePlayers,avOre,oreCost,timCost);
@@ -184,7 +192,9 @@ function updServ(){
     let t = 100*(f+1)-timCost;
 
     User.updateOne({username:"admin"},{oreLevel:l,timLevel:f,oreProgress:o,
-        timProgress:t},function(err,res){});
+        timProgress:t},function(err,res){
+            console.log(res);
+        });
 }
 
 setInterval(generateOre, tim);            //timer
