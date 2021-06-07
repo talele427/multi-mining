@@ -196,7 +196,6 @@ function updServ(){
             console.log(res);
         });
 }
-
-setInterval(generateOre, tim);            //timer
+            //timer
 
 setInterval(updServ,tim);
