@@ -22,7 +22,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true}) //mo
 }))
 .catch((err) => console.log(err));
 
-var onlinePlayers=0;                        //server-side variables
+var onlinePlayers=77;                        //server-side variables
 var avOre=10;
 var tim = 60000;
 var maxOre=10;
