@@ -1,3 +1,5 @@
+(function() {
+
 var socket = io();
 
 var nametag = document.getElementById('nametag');
@@ -66,3 +68,5 @@ function deleteValues(){
 
 btn.addEventListener('click', mine);
 nametag.addEventListener('click', deleteValues);
+    
+})();
