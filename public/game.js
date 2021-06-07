@@ -1,4 +1,4 @@
-const hero='https://secret-tor-02907.herokuapp.com/';
+const hero='https://multi-miner.herokuapp.com/';
 
 var socket = io(hero); //client-side socket
 
