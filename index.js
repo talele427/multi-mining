@@ -29,7 +29,7 @@ var maxOre=10;
 var oreDonated =0;
 var timDonated=0;
 var timLevel=0;
-var oreLevel=1;
+var oreLevel=10;
 var oreCost=0;
 var timCost=0;
 
