@@ -1,3 +1,5 @@
+(function(){
+    
 const hero='https://multi-miner.herokuapp.com/';
 
 var socket = io(hero); //client-side socket
@@ -189,3 +191,5 @@ fc.addEventListener('click', donateFore);
 setInterval(function(){
     socket.emit('dbUpdate', player.username,player.ores,player.mined,player.miner,player.donated,player.level);
 }, 30000);
+    
+})();
