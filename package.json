@@ -18,6 +18,8 @@
   "homepage": "https://github.com/talele427/talele427.github.io#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.12.13",
+    "nodemon": "^2.0.7",
     "socket.io": "^4.1.2"
   }
 }

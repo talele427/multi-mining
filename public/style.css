@@ -4,58 +4,145 @@
     font-family: 'Courier New', Courier, monospace;
     font-size:larger;
 }
+
+#headr{
+    position:absolute;
+    width:100%;
+    height:10%;
+    background-color: gray;
+}
+
 #nametag{
     position: absolute;
-    text-align: left;
-    left:0px;
-    top:0px;
-    height:10%;
-    width: 25%;
-    line-height: 65px;
-    background-color: cadetblue;
-    padding-left: 1%;
+    top:2%;
+    left:2%;
 }
+
 #online{
+    font-size: 175%;
+    text-align:center;
+}
+
+#oreDisplay{
     position: absolute;
+    top:2%;
+    right:2%;
+}
+
+#bg2{
     text-align: center;
-    left:25%;
-    top:0px;
-    line-height: 65px;
-    height:10%;
-    width: 50%;
-    background-color: cadetblue;
-}
-#yore{
-    line-height: 65px;
+    color: gray;
     position: absolute;
-    text-align: right;
-    left:75%;
-    top:0px;
-    height:10%;
-    width: 25%;
-    background-color: cadetblue;
-}
-#square{
-    position:absolute;
     top:10%;
-    left:0px;
     width:100%;
-    height: 70%;
-    text-align: center;
-    font-size:300px;
-    
-    background-color: darkslategray;
+    height:70%;
+    font-size:1400%;
+    background-color: black;
 }
+
 #button{
-    position:absolute;
+    position: absolute;
+    background-color: gray;
     top:80%;
     left:0px;
-    height:20%;
-    font-size: 110px;
     width:100%;
+    height:20%;
+    font-size: 350%;
     text-align: center;
-    background-color: deepskyblue;
 }
+
+#button2{
+    position: absolute;
+    background-color: gray;
+    top:80%;
+    left:0px;
+    width:30%;
+    height:20%;
+    font-size: 200%;
+    text-align: center;
+}
+
+#button3{
+    position: absolute;
+    background-color: gray;
+    top:80%;
+    right:0%;
+    width:30%;
+    height:20%;
+    font-size: 200%;
+    text-align: center;
+}
+
+#moreore{
+    position: absolute;
+    background-color: gray;
+    top:90%;
+    right:0%;
+    width:30%;
+    height:10%;
+    font-size: 150%;
+    text-align: center;
+}
+
+#automine{
+    position: absolute;
+    background-color: gray;
+    top:90%;
+    left:2%;
+    width:30%;
+    height:10%;
+    font-size: 150%;
+    text-align: center;
+}
+
+#button4{
+    position: absolute;
+    background-color: black;
+    top:10%;
+    color:gray;
+    right:0%;
+    width:33%;
+    height:70%;
+    font-size: 350%;
+    text-align: center;
+}
+
+#button5{
+    position: absolute;
+    background-color: black;
+    top:10%;
+    color:gray;
+    left:2%;
+    width:31%;
+    height:70%;
+    font-size: 350%;
+    text-align: center;
+}
+
+#forecost{
+    position: absolute;
+    background-color: black;
+    top:50%;
+    color:gray;
+    left:2%;
+    width:31%;
+    height:30%;
+    font-size: 300%;
+    text-align: center;
+}
+
+#morecost{
+    position: absolute;
+    background-color: black;
+    top:50%;
+    color:gray;
+    right:0%;
+    width:33%;
+    height:30%;
+    font-size: 300%;
+    text-align: center;
+}
+
 @keyframes loading{
     0% {width:0%}   
     100%{width:100%}
@@ -71,6 +158,34 @@
     bottom:0px;
     left:0px;
     height:2%;
-    background-color: dimgray;
+    background-color: black;
 }
 
+#bg{
+    position:absolute;
+    top: 0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background-color: cadetblue;
+}
+
+.login-form{
+    position:relative;
+    top:200px;
+    left:40%;
+    width:20%;
+    
+}
+
+#pass{
+    position:absolute;
+    top:50px;
+}
+
+#login{
+    position: relative;
+    top:20px;
+    left:30%;
+    width:100%;
+}
