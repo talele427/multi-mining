@@ -250,6 +250,7 @@ function updServ(){
     for (var i = 0;i<oreL;i++){
         maxOre=10+i
     }
+    tim=60-timL;
     Admin.updateOne({username:"admin"},{oreLevel:l,timLevel:f,oreCost:o,
         timCost:t},function(err,res){
         });
